@@ -1,0 +1,185 @@
+.countries {
+  padding: 125px 0px 50px 0px;
+}
+.filterCountries {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.filterCountries form {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 16px 25px;
+  box-shadow: 0px 0px 10px #0000000e;
+}
+.body.dark .filterCountries form {
+  background-color: #2b3844;
+}
+.filterCountries form input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  width: 300px;
+}
+.filterCountries form input::placeholder {
+  color: #848484;
+}
+.body.dark .filterCountries form input::placeholder {
+  color: #ffffff;
+}
+.body.dark .filterCountries form input {
+  color: #ffffff;
+}
+.filterCountries form button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.filterCountries .select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  background-color: #ffffff;
+  width: 200px;
+  height: 54px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 10px #0000000e;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  position: relative;
+}
+.body.dark .filterCountries .select {
+  background-color: #2b3844;
+  color: #ffffff;
+}
+.filterCountries .select .continent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1px;
+  top: 60px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all 0.2s ease-in-out;
+}
+.filterCountries .select.active .continent {
+  transform: scaleY(1);
+}
+.filterCountries .select.active i {
+  transform: rotateX(180deg);
+  transition: all 0.2s ease-in-out;
+}
+.filterCountries .select .continent div {
+  width: 200px;
+  height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #111517;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  box-shadow: 0px 0px 10px #0000000e;
+}
+
+.body.dark .filterCountries .select .continent div {
+  background-color: #2b3844;
+  color: #ffffff;
+}
+.countriesPage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  grid-gap: 30px;
+}
+.countriesPage .country {
+  height: 336px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px #0000000e;
+  border-radius: 5px;
+}
+.countriesPage .country.none {
+  display: none;
+}
+.body.dark .countriesPage .country {
+  background-color: #2b3844;
+}
+.countriesPage .country img {
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  cursor: pointer;
+}
+.countriesPage .country .countryInfo {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  color: #111517;
+}
+.body.dark .countriesPage .country .countryInfo {
+  color: #ffffff;
+}
+.countriesPage .country .countryInfo h3 {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 26px;
+}
+.countriesPage .country .countryInfo div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+.countriesPage .country .countryInfo div p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+.countriesPage .country .countryInfo div p b {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+}
+@media (max-width: 768px){
+  .filterCountries form{
+    width: 300px;
+  }
+  .filterCountries .select{
+    width: 150px;
+  }
+}
+@media (max-width: 580px){
+  .countriesPage{
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .filterCountries {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .filterCountries {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+  }
+  .filterCountries form {
+    width: 100%;
+    gap: 15px;
+  }
+}

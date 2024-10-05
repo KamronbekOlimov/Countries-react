@@ -1,0 +1,7 @@
+.body{
+    background-color: #ecf6f168;
+    min-height: 100vh;
+}
+.body.dark{
+    background-color: #202C36;
+}
