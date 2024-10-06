@@ -7,16 +7,14 @@ import Countries from './pages/countries/Countries'
 function App() {
   const [API, setAPI] = useState('https://restcountries.com/v3.1/all')
   const [countries, setCountries] = useState([])
+  const [continentCountry, setContinentCountry] = useState([])
   const getData = async (api) => {
     const req = await fetch(api)
     const data = await req.json()
     setCountries(data)
   }
-  useEffect(()=>{
-    getData(API)
-  },[])
   const [mode, setMode] = useState(false)
-  const [modeImg, setModeImg] = useState('/ligtMode.svg')
+  const [modeImg, setModeImg] = useState('/lightMoon.svg')
   const [search, setSearch] = useState('/lightSearch.svg')
   const [continents, setContinents] = useState(["All","Africa","Antarctic","Asia","Europe", "Americas","Oceania"])
   const [continentBtn, setContinentBtn] = useState(false)
@@ -45,16 +43,25 @@ function App() {
         case 'Europe': return country.region == "Europe"
         case 'Americas': return country.region == "Americas"
         case 'Oceania': return country.region == "Oceania"
+        default: return true
       }
     });
-    console.log(filterCountries);
-  };  
+    setContinentCountry(filterCountries)
+  };
+  const [searchCountry, setSearchCountry] = useState('');
+  const searchInput = (inputValue) => {
+    setSearchCountry(inputValue)
+  }
+  useEffect(()=>{
+    getData(API)
+    continentFilter(continentIndex)
+  },[API, continentIndex, countries])
   return (
     <div className={mode?'body dark':'body'}>
     <BrowserRouter>
     <Navbar changeMode={changeMode} modeImg={modeImg}/>
     <Routes>
-      <Route path='/' element={<Countries countries={countries} continentIndex={continentIndex} continentBtn={continentBtn} selectBtn={selectBtn} search={search} continents={continents} continentFilter={continentFilter}/>}/>
+      <Route path='/' element={<Countries continentCountry={continentCountry} continentIndex={continentIndex} continentBtn={continentBtn} selectBtn={selectBtn} search={search} continents={continents} continentFilter={continentFilter} searchInput={searchInput} searchCountry={searchCountry}/>}/>
     </Routes>
     </BrowserRouter>
     </div>

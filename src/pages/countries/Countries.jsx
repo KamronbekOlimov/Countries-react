@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import "./Countries.css";
 function Countries({
-  countries,
+  continentCountry,
   search,
   continents,
   continentFilter,
   selectBtn,
   continentBtn,
   continentIndex,
-}) {
-  const [searchCountry, setSearchCountry] = useState();
+  searchInput,
+  searchCountry
+}) 
+{
   return (
     <div className="countries">
       <div className="container">
@@ -22,13 +24,12 @@ function Countries({
               type="text"
               placeholder="Search for a country…"
               value={searchCountry}
-              onInput={(e) => setSearchCountry(e.target.value)}
+              onInput={(e) => searchInput(e.target.value)}
             />
           </form>
           <button
             onClick={() => selectBtn()}
-            className={continentBtn ? "select active" : "select"}
-          >
+            className={continentBtn ? "select active" : "select"}>
             <span>{continents[continentIndex]}</span>
             <i className="fa-solid fa-chevron-up"></i>
             <div className="continent">
@@ -41,7 +42,7 @@ function Countries({
           </button>
         </div>
         <div className="countriesPage">
-          {countries.map((country, index) => {
+          {continentCountry.map((country, index) => {
             return (
               <div key={index} className="country">
                 <img src={country.flags.svg} alt={country.flags.alt} />
@@ -58,7 +59,7 @@ function Countries({
                     </p>
                     <p>
                       <b>Capital: </b>
-                      {country.capital}
+                      {country.capital?country.capital:'No capital'}
                     </p>
                   </div>
                 </div>
