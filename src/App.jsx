@@ -3,6 +3,7 @@ import './App.css';
 import Navbar from './components/navbar/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Countries from './pages/countries/Countries';
+import OneCountry from './pages/oneCountry/OneCountry';
 function App() {
   const [API, setAPI] = useState('https://restcountries.com/v3.1/all');
   const [countries, setCountries] = useState([]);
@@ -76,6 +77,7 @@ function App() {
               />
             }
           />
+          <Route path='/oneCountry/:name' element={<OneCountry countriesBase={countriesBase}/>}/>
         </Routes>
       </BrowserRouter>
     </div>

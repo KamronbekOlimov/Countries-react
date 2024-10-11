@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Countries.css";
 function Countries({
   countriesBase,
@@ -38,7 +39,7 @@ function Countries({
         <div className="countriesPage">
           {countriesBase.length?countriesBase.map((country, index) => {            
             return <div key={index} className="country">
-              <img src={country.flags.svg} alt={country.flags.alt} />
+              <Link to={`/oneCountry/${country.name.common}`}><img src={country.flags.svg} alt={country.flags.alt} /></Link>
               <div className="countryInfo">
                 <h3>{country.name.common}</h3>
                 <div>
