@@ -44,13 +44,13 @@
   flex-direction: column;
   row-gap: 30px;
 }
-.oneCountry .countryDetails h1 {
+h1 {
   color: #111517;
   font-size: 32px;
   font-weight: 800;
   line-height: 43.65px;
 }
-.body.dark .oneCountry .countryDetails h1 {
+h1 {
   color: #ffffff;
 }
 .countryDetails div {
